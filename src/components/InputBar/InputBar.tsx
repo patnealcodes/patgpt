@@ -1,45 +1,54 @@
-import { useLayoutEffect, useRef, useState } from "react"
+import { useContext, useLayoutEffect, useRef, useState } from "react"
 import "./InputBar.css"
 import upArrow from '@/assets/up-arrow.svg'
+import { PseudoSignals } from "../../App"
 
 function InputBar() {
-  const [message, setMessage] = useState('')
+  const [question, setQuestion] = useState('')
   const textareaRef = useRef<HTMLTextAreaElement>(null)
+  const pseudoSignals = useContext(PseudoSignals)
 
-  function submitMessage() {
+  function submitQuestion() {
+    if (!question.length) return
     // TODO: actually do the thing
-    setMessage('')
+    if (pseudoSignals.scrollToBottom) {
+      pseudoSignals.scrollToBottom()
+    }
+    setQuestion('')
   }
 
   function handleKeyDown(e: React.KeyboardEvent) {
     if (e.key === 'Enter' && !e.shiftKey) {
       e.preventDefault()
-      submitMessage()
+      submitQuestion()
     }
   }
 
   function handleOnChange(e: React.ChangeEvent<HTMLTextAreaElement>) {
     if (e.currentTarget.value.length >= 300) return
-    setMessage(e.target.value);
+    setQuestion(e.target.value);
   }
 
   useLayoutEffect(() => {
     textareaRef.current!.style.height = 'auto'
     textareaRef.current!.style.height = `${textareaRef.current!.scrollHeight}px`
-  }, [message])
+    if (pseudoSignals.checkIfScrolled) {
+      pseudoSignals.checkIfScrolled()
+    }
+  }, [question]) // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <div className="input-bar">
       <textarea
-        className="message"
+        className="question-box"
         placeholder="Message PatGPT..."
-        value={message}
+        value={question}
         rows={1}
         onChange={handleOnChange}
         onKeyDown={handleKeyDown}
         ref={textareaRef}
       />
-      <button className="submit-button" onClick={submitMessage} disabled={!message.length}>
+      <button className="submit-button" onClick={submitQuestion} disabled={!question.length}>
         <img src={upArrow} alt="Submit Message" />
       </button>
     </div>

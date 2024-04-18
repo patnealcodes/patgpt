@@ -1,0 +1,57 @@
+.chat-log-container {
+  display: flex;
+  flex-grow: 1;
+  height: 100%;
+  position: relative;
+  width: 100%;
+}
+
+.chat-log {
+  overflow-y: scroll;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+.to-bottom {
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  bottom: 20px;
+  left: 0;
+  right: 0;
+}
+
+.to-bottom img {
+  background-color: #242424;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  cursor: pointer;
+  padding: 6px;
+}
+
+.message {
+  display: flex;
+  margin: 10px 0;
+}
+
+.message img {
+  background: #b4d455;
+  border-radius: 50%;
+  max-width: 25px;
+  height: 25px;
+  width: 100%;
+}
+
+.message-details {
+  text-align: left;
+  margin-left: 10px;
+}
+
+.message p {
+  text-align: left;
+}
