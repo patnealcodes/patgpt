@@ -1,0 +1,44 @@
+.input-bar {
+  align-items: flex-end;
+  border: 1px solid;
+  border-radius: 16px;
+  border-color: rgba(255, 255, 255, 0.15);
+  display: flex;
+  max-width: 750px;
+  position: relative;
+  padding: 0 48px 0 0;
+  scrollbar-width: none;
+  width: 100%;
+
+  &:focus-within {
+    border-color: rgba(255, 255, 255, 0.25);
+  }
+}
+
+.message {
+  font-size: 16px;
+  background: none;
+  border: none;
+  line-height: 24px;
+  max-height: 300px;
+  outline: none;
+  overflow-y: scroll;
+  margin: 12px;
+  resize: none;
+  width: 100%;
+}
+
+.submit-button {
+  background: white;
+  position: absolute;
+  bottom: 12px;
+  display: flex;
+  right: 12px;
+  border-radius: 6px;
+  padding: 4px;
+  border: none;
+}
+
+.submit-button:disabled {
+  opacity: 0.15;
+}
