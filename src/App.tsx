@@ -1,4 +1,4 @@
-import { ChatLog, InputBar, MenuBar } from './components'
+import { ChatLog, InputBar, MenuBar, Sidebar } from './components'
 
 import './App.css'
 import { createContext } from 'react'
@@ -13,13 +13,18 @@ function App() {
   const events = {}
 
   return (
-    <main>
+    <div className='layout-container'>
       <PseudoSignals.Provider value={events}>
-        <InputBar />
-        <ChatLog />
-        <MenuBar />
+        <aside>
+          <Sidebar />
+        </aside>
+        <main>
+          <InputBar />
+          <ChatLog />
+          <MenuBar />
+        </main>
       </PseudoSignals.Provider>
-    </main>
+    </div>
   )
 }
 

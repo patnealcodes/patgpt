@@ -1,5 +1,6 @@
 import { PseudoSignals } from "../../App"
 import user from "@/assets/default-user.svg"
+import pat from "@/assets/pat.jpg"
 import downArrow from "@/assets/down-arrow.svg"
 import "./ChatLog.css"
 import { useContext, useEffect, useRef, useState } from "react"
@@ -11,7 +12,7 @@ interface MessageProps {
 function Message({ sender }: MessageProps) {
   return (
     <div className="message">
-      <img src={user} alt={sender} />
+      <img src={sender === "user" ? user : pat} alt={sender} />
       <div className="message-details">
         <strong>{sender === "bot" ? "PatGPT" : "You"}</strong>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint delectus perferendis suscipit? Laborum dolorem odio esse laudantium animi optio reiciendis harum, accusantium aperiam officiis nisi, architecto porro in ipsum eveniet?</p>
