@@ -17,6 +17,12 @@
   bottom: 0;
 }
 
+.messages {
+  max-width: 768px;
+  margin: 0 auto;
+  padding: 0 16px 0;
+}
+
 .to-bottom {
   display: flex;
   justify-content: center;

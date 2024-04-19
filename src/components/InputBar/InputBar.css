@@ -1,3 +1,9 @@
+.input-bar-container {
+  padding: 0 16px 16px;
+  width: 100%;
+  max-width: 768px;
+}
+
 .input-bar {
   align-items: flex-end;
   border: 1px solid;
@@ -8,7 +14,6 @@
   position: relative;
   padding: 0 48px 0 0;
   scrollbar-width: none;
-  width: 100%;
 
   &:focus-within {
     border-color: rgba(255, 255, 255, 0.25);

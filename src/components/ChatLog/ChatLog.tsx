@@ -43,21 +43,29 @@ function ChatLog() {
 
     // Scroll to bottom on first load
     scrollToBottom()
+
+    window.addEventListener('resize', checkIfScrolled)
+
+    return () => {
+      window.removeEventListener('resize', checkIfScrolled)
+    }
   }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <div className="chat-log-container">
       <div className="chat-log" ref={chatLogRef} onScroll={checkIfScrolled}>
-        <Message sender="user" />
-        <Message sender="bot" />
-        <Message sender="user" />
-        <Message sender="user" />
-        <Message sender="bot" />
-        <Message sender="user" />
-        <Message sender="bot" />
-        <Message sender="user" />
-        <Message sender="user" />
-        <Message sender="bot" />
+        <div className="messages">
+          <Message sender="user" />
+          <Message sender="bot" />
+          <Message sender="user" />
+          <Message sender="user" />
+          <Message sender="bot" />
+          <Message sender="user" />
+          <Message sender="bot" />
+          <Message sender="user" />
+          <Message sender="user" />
+          <Message sender="bot" />
+        </div>
       </div>
       {
         chatScrolled && (
@@ -67,7 +75,7 @@ function ChatLog() {
 
         )
       }
-    </div>
+    </div >
   )
 }
 

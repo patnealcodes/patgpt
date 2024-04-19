@@ -38,19 +38,21 @@ function InputBar() {
   }, [question]) // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
-    <div className="input-bar">
-      <textarea
-        className="question-box"
-        placeholder="Message PatGPT..."
-        value={question}
-        rows={1}
-        onChange={handleOnChange}
-        onKeyDown={handleKeyDown}
-        ref={textareaRef}
-      />
-      <button className="submit-button" onClick={submitQuestion} disabled={!question.length}>
-        <img src={upArrow} alt="Submit Message" />
-      </button>
+    <div className="input-bar-container">
+      <div className="input-bar">
+        <textarea
+          className="question-box"
+          placeholder="Message PatGPT..."
+          value={question}
+          rows={1}
+          onChange={handleOnChange}
+          onKeyDown={handleKeyDown}
+          ref={textareaRef}
+        />
+        <button className="submit-button" onClick={submitQuestion} disabled={!question.length}>
+          <img src={upArrow} alt="Submit Message" />
+        </button>
+      </div>
     </div>
   )
 }

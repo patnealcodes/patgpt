@@ -1,4 +1,4 @@
-import { ChatLog, InputBar, MenuBar, Sidebar } from './components'
+import { ChatLog, InputBar, Sidebar } from './components'
 
 import './App.css'
 import { createContext } from 'react'
@@ -21,7 +21,6 @@ function App() {
         <main>
           <InputBar />
           <ChatLog />
-          <MenuBar />
         </main>
       </PseudoSignals.Provider>
     </div>
