@@ -37,8 +37,12 @@ function ChatLog() {
   }
 
   useEffect(() => {
+    // Set up signals
     pseudoSignals.checkIfScrolled = checkIfScrolled
     pseudoSignals.scrollToBottom = scrollToBottom
+
+    // Scroll to bottom on first load
+    scrollToBottom()
   }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
   return (

@@ -32,8 +32,8 @@ function InputBar() {
   useLayoutEffect(() => {
     textareaRef.current!.style.height = 'auto'
     textareaRef.current!.style.height = `${textareaRef.current!.scrollHeight}px`
-    if (pseudoSignals.checkIfScrolled) {
-      pseudoSignals.checkIfScrolled()
+    if (pseudoSignals.scrollToBottom) {
+      pseudoSignals.scrollToBottom()
     }
   }, [question]) // eslint-disable-line react-hooks/exhaustive-deps
 

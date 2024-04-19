@@ -2,9 +2,18 @@ import './Sidebar.css';
 
 function Sidebar() {
   return (
-    <div className="sidebar">
-      <h2>Sidebar</h2>
-    </div>
+    <section className="sidebar">
+      <header>
+        <h1>PatGPT</h1>
+        <h2>at patneal.codes</h2>
+      </header>
+      <nav>
+        <a href="#">Resume</a>
+        <a href="#">LinkedIn</a>
+        <a href="#">GitHub</a>
+        <a href="#">Contact</a>
+      </nav>
+    </section>
   );
 }
 
