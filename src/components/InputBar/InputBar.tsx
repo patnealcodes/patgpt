@@ -53,6 +53,9 @@ function InputBar() {
           <img src={upArrow} alt="Submit Message" />
         </button>
       </div>
+      <p>
+        ChatGPT can make mistakes and so can I. Take info with a grain of salt.
+      </p>
     </div>
   )
 }

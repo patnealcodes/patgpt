@@ -5,7 +5,19 @@
   padding: 16px;
 
   header {
-    text-align: center;
+    display: flex;
+    align-items: center;
+
+    img {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      margin-right: 8px;
+    }
+
+    h1 {
+      font-size: 16px;
+    }
   }
 
   h1 {
@@ -26,15 +38,40 @@
   }
 }
 
+.nav-item {
+  span {
+    display: flex;
+    font-size: 12px;
+    margin: 0 0 8px 6px;
+  }
+}
+
 .nav-link {
   display: block;
+  font-weight: normal;
+  font-size: 14px;
   color: white;
   text-align: left;
-  padding: 0.5em 1em;
-  border-radius: 0.5em;
+  padding: 6px;
+  border-radius: 6px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 0 14px 0;
+
+  img {
+    display: none;
+    width: 18px;
+    height: 18px;
+  }
 
   &:hover {
     color: white;
     background-color: rgba(255, 255, 255, 0.05);
+
+    img {
+      display: block;
+    }
   }
 }

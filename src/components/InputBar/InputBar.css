@@ -1,7 +1,12 @@
 .input-bar-container {
-  padding: 0 12px 12px;
+  padding: 0 12px 8px;
   width: 100%;
   max-width: 808px;
+
+  p {
+    font-size: 12px;
+    padding: 8px 8px 0;
+  }
 }
 
 .input-bar {
@@ -12,7 +17,6 @@
   display: flex;
   flex-shrink: 0;
   position: relative;
-  padding: 0 48px 0 0;
   scrollbar-width: none;
 
   &:focus-within {
@@ -28,7 +32,8 @@
   max-height: 150px;
   outline: none;
   overflow-y: scroll;
-  margin: 12px;
+  margin: 12px 0 12px 12px;
+  padding: 0 36px 0 0;
   resize: none;
   width: 100%;
 }
@@ -36,7 +41,7 @@
 .submit-button {
   background: white;
   position: absolute;
-  bottom: 10px;
+  bottom: 8px;
   display: flex;
   right: 12px;
   border-radius: 6px;
