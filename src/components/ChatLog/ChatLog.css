@@ -6,6 +6,22 @@
   width: 100%;
 }
 
+.chat-log-header {
+  align-items: center;
+  display: flex;
+  padding: 16px;
+  background-color: #242424;
+  z-index: 2;
+  width: 100%;
+  height: 56px;
+  font-size: 18px;
+
+  span {
+    margin: 0 0 0 4px;
+    opacity: 0.75;
+  }
+}
+
 .chat-log {
   overflow-y: scroll;
   position: absolute;
@@ -15,6 +31,8 @@
   right: 0;
   top: 0;
   bottom: 0;
+  padding: 56px 0 0;
+  z-index: 1;
 }
 
 .messages {
@@ -30,6 +48,7 @@
   bottom: 20px;
   left: 0;
   right: 0;
+  z-index: 2;
 }
 
 .to-bottom img {
@@ -37,12 +56,12 @@
   border-radius: 50%;
   border: 1px solid rgba(255, 255, 255, 0.15);
   cursor: pointer;
-  padding: 6px;
+  padding: 4px;
 }
 
 .message {
   display: flex;
-  margin: 10px 0;
+  margin: 0 0 40px;
 }
 
 .message img {

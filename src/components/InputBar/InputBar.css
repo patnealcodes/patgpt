@@ -1,7 +1,7 @@
 .input-bar-container {
-  padding: 0 16px 16px;
+  padding: 0 12px 12px;
   width: 100%;
-  max-width: 768px;
+  max-width: 808px;
 }
 
 .input-bar {
@@ -36,7 +36,7 @@
 .submit-button {
   background: white;
   position: absolute;
-  bottom: 12px;
+  bottom: 10px;
   display: flex;
   right: 12px;
   border-radius: 6px;

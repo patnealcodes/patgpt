@@ -53,6 +53,9 @@ function ChatLog() {
 
   return (
     <div className="chat-log-container">
+      <div className="chat-log-header">
+        <strong>PatGPT</strong> <span>1.0</span>
+      </div>
       <div className="chat-log" ref={chatLogRef} onScroll={checkIfScrolled}>
         <div className="messages">
           <Message sender="user" />
