@@ -42,7 +42,7 @@ function InputBar() {
       <div className="input-bar">
         <textarea
           className="question-box"
-          placeholder="Message PatGPT..."
+          placeholder="Ask PatGPT..."
           value={question}
           rows={1}
           onChange={handleOnChange}
@@ -54,7 +54,7 @@ function InputBar() {
         </button>
       </div>
       <p>
-        ChatGPT can make mistakes and so can I. Take info with a grain of salt.
+        Note: Like other Generative Pretrained Transformers, I may hallucinate.
       </p>
     </div>
   )

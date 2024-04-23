@@ -1,28 +1,12 @@
-import { PseudoSignals } from "../../App"
+import { PseudoSignals, Message } from "../../App"
 import user from "@/assets/default-user.svg"
 import pat from "@/assets/pat.jpg"
 import downArrow from "@/assets/down-arrow.svg"
 import "./ChatLog.css"
 import { useContext, useEffect, useRef, useState } from "react"
 
-interface MessageProps {
-  sender: "bot" | "user"
-}
-
-function Message({ sender }: MessageProps) {
-  return (
-    <div className="message">
-      <img src={sender === "user" ? user : pat} alt={sender} />
-      <div className="message-details">
-        <strong>{sender === "bot" ? "PatGPT" : "You"}</strong>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint delectus perferendis suscipit? Laborum dolorem odio esse laudantium animi optio reiciendis harum, accusantium aperiam officiis nisi, architecto porro in ipsum eveniet?</p>
-      </div>
-    </div>
-  )
-}
-
-function ChatLog() {
-  const [chatScrolled, setChatScrolled] = useState(true)
+function ChatLog({ messages }: { messages: Message[] }) {
+  const [chatScrolled, setChatScrolled] = useState(false)
   const chatLogRef = useRef<HTMLDivElement>(null)
   const pseudoSignals = useContext(PseudoSignals)
 
@@ -51,23 +35,22 @@ function ChatLog() {
     }
   }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
+
   return (
     <div className="chat-log-container">
-      <div className="chat-log-header">
-        <strong>PatGPT</strong> <span>1.0</span>
-      </div>
       <div className="chat-log" ref={chatLogRef} onScroll={checkIfScrolled}>
         <div className="messages">
-          <Message sender="user" />
-          <Message sender="bot" />
-          <Message sender="user" />
-          <Message sender="user" />
-          <Message sender="bot" />
-          <Message sender="user" />
-          <Message sender="bot" />
-          <Message sender="user" />
-          <Message sender="user" />
-          <Message sender="bot" />
+          {
+            messages.map(({ msg, sender }, i) => (
+              <div className="message" key={`${sender}-${i}`}>
+                <img src={sender === "user" ? user : pat} alt={sender} />
+                <div className="message-details">
+                  <strong>{sender === "bot" ? "PatGPT" : "You"}</strong>
+                  <p>{msg}</p>
+                </div>
+              </div>
+            ))
+          }
         </div>
       </div>
       {

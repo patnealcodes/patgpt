@@ -1,4 +1,4 @@
-import { ChatLog, InputBar, Sidebar } from './components'
+import { ChatLog, InputBar, IntroPanel, Sidebar } from './components'
 
 import './App.css'
 import { createContext, useState } from 'react'
@@ -9,6 +9,11 @@ import close from "@/assets/close.svg"
 // Mom: "We have signals home"
 // Signals at home:
 export const PseudoSignals = createContext<{ [key: string]: () => void }>({})
+export interface Message {
+  sender: "bot" | "user",
+  msg: string
+}
+
 
 function App() {
   const [sidebarOpen, setSidebarOpen] = useState(false)
@@ -18,6 +23,14 @@ function App() {
   function toggleSidebar() {
     setSidebarOpen(!sidebarOpen)
   }
+
+  // TEMP
+  const messages: Message[] = [
+    { sender: "bot", msg: "Hi, I'm PatGPT" },
+    { sender: "bot", msg: "Ask me anything about Pat Neal's resume" },
+    { sender: "user", msg: "but why" },
+  ]
+  // TEMP
 
   return (
     <div className='layout-container'>
@@ -36,7 +49,14 @@ function App() {
         </aside>
         <main>
           <InputBar />
-          <ChatLog />
+          {
+            messages.length
+              ? <ChatLog messages={messages} />
+              : <IntroPanel />
+          }
+          <div className="chat-log-header">
+            <strong>PatGPT</strong> <span>1.0</span>
+          </div>
         </main>
       </PseudoSignals.Provider>
     </div>
