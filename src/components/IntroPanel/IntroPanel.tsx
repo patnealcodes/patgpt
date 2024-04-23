@@ -1,3 +1,5 @@
+import { useContext } from 'react';
+import { PseudoSignals } from '../../App';
 import './IntroPanel.css';
 import pat from "@/assets/pat.jpg"
 
@@ -21,11 +23,14 @@ const introQuestions = [
 ]
 
 function IntroPanel() {
+  const pseudoSignals = useContext(PseudoSignals);
+
   return (
     <div className="intro-panel">
       <WelcomeBox />
       <ul className="intro-questions">
-        {introQuestions.map(q => <li key={q}>{q}</li>)}
+        {/* TODO: Ugh, clean this up */}
+        {introQuestions.map(q => <li key={q} onClick={() => pseudoSignals.addMessage!({ sender: "user", msg: q })}>{q}</li>)}
       </ul>
     </div>
   )

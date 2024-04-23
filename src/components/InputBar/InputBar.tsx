@@ -10,7 +10,9 @@ function InputBar() {
 
   function submitQuestion() {
     if (!question.length) return
-    // TODO: actually do the thing
+    if (pseudoSignals.addMessage) {
+      pseudoSignals.addMessage({ sender: 'user', msg: question })
+    }
     if (pseudoSignals.scrollToBottom) {
       pseudoSignals.scrollToBottom()
     }

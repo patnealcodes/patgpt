@@ -5,32 +5,36 @@ import { createContext, useState } from 'react'
 import menu from "@/assets/menu.svg"
 import close from "@/assets/close.svg"
 
-// Me: "Mom, can we have signals in JS natively?"
-// Mom: "We have signals home"
-// Signals at home:
-export const PseudoSignals = createContext<{ [key: string]: () => void }>({})
+export const PseudoSignals = createContext<Signals>({})
 export interface Message {
   sender: "bot" | "user",
   msg: string
 }
 
+// Me: "Mom, can we have signals in JS natively?"
+// Mom: "We have signals home"
+// Signals at home:
+interface Signals {
+  scrollToBottom?: () => void,
+  checkIfScrolled?: () => void,
+  addMessage?: (msg: Message) => void,
+}
 
 function App() {
   const [sidebarOpen, setSidebarOpen] = useState(false)
-
-  const events = {}
+  const [messages, setMessages] = useState<Message[]>([])
 
   function toggleSidebar() {
     setSidebarOpen(!sidebarOpen)
   }
 
-  // TEMP
-  const messages: Message[] = [
-    { sender: "bot", msg: "Hi, I'm PatGPT" },
-    { sender: "bot", msg: "Ask me anything about Pat Neal's resume" },
-    { sender: "user", msg: "but why" },
-  ]
-  // TEMP
+  function addMessage(msg: Message) {
+    setMessages((prev) => [...prev, msg])
+  }
+
+  const events = {
+    addMessage,
+  }
 
   return (
     <div className='layout-container'>
