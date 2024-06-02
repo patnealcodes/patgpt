@@ -1,5 +1,4 @@
-import { useContext } from 'react';
-import { PseudoSignals } from '../../App';
+import { useChatStore } from '@/App';
 import './IntroPanel.css';
 import pat from "@/assets/pat.jpg"
 
@@ -23,14 +22,14 @@ const introQuestions = [
 ]
 
 function IntroPanel() {
-  const pseudoSignals = useContext(PseudoSignals);
+  const { addMessage } = useChatStore()
 
   return (
     <div className="intro-panel">
       <WelcomeBox />
       <ul className="intro-questions">
         {/* TODO: Ugh, clean this up */}
-        {introQuestions.map(q => <li key={q} onClick={() => pseudoSignals.addMessage!({ sender: "user", msg: q })}>{q}</li>)}
+        {introQuestions.map(q => <li key={q} onClick={() => addMessage!({ sender: "user", msg: q })}>{q}</li>)}
       </ul>
     </div>
   )

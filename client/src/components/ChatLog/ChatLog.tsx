@@ -1,30 +1,14 @@
-import { PseudoSignals, Message } from "../../App"
+import { Message, useChatStore } from "@/App"
 import user from "@/assets/default-user.svg"
 import pat from "@/assets/pat.jpg"
 import downArrow from "@/assets/down-arrow.svg"
 import "./ChatLog.css"
-import { useContext, useEffect, useRef, useState } from "react"
+import { useEffect } from "react"
 
 function ChatLog({ messages }: { messages: Message[] }) {
-  const [chatScrolled, setChatScrolled] = useState(false)
-  const chatLogRef = useRef<HTMLDivElement>(null)
-  const pseudoSignals = useContext(PseudoSignals)
-
-  function checkIfScrolled() {
-    const atBottom = chatLogRef.current!.scrollTop + chatLogRef.current!.clientHeight === chatLogRef.current!.scrollHeight;
-
-    setChatScrolled(!atBottom)
-  }
-
-  function scrollToBottom() {
-    chatLogRef.current!.scrollTo(0, chatLogRef.current!.scrollHeight)
-  }
+  const { chatLogRef, scrollToBottom, checkIfScrolled, chatScrolled } = useChatStore()
 
   useEffect(() => {
-    // Set up signals
-    pseudoSignals.checkIfScrolled = checkIfScrolled
-    pseudoSignals.scrollToBottom = scrollToBottom
-
     // Scroll to bottom on first load
     scrollToBottom()
 
@@ -33,7 +17,7 @@ function ChatLog({ messages }: { messages: Message[] }) {
     return () => {
       window.removeEventListener('resize', checkIfScrolled)
     }
-  }, []) // eslint-disable-line react-hooks/exhaustive-deps
+  }, [])
 
 
   return (

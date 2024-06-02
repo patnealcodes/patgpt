@@ -1,3 +1,0 @@
-- I am not open to new full-time opportunities currently
-- I am always open to growing my network, feel free to reach out and connect!
-- I have a solid network of top-notch developers, designers, and product managers that I can refer you to
